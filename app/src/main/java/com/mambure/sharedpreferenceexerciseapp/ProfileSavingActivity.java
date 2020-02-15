@@ -1,10 +1,9 @@
 package com.mambure.sharedpreferenceexerciseapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileSavingActivity extends AppCompatActivity {
 
-    private SharedPreferences preferences;
     private EditText inputName;
     private EditText inputAge;
     private EditText inputTel;
@@ -27,12 +25,19 @@ public class ProfileSavingActivity extends AppCompatActivity {
         inputAge = findViewById(R.id.inputAge);
         inputTel = findViewById(R.id.inputTelephone);
         inputEmail = findViewById(R.id.inputEmail);
+        Button button = findViewById(R.id.btnSave);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveProfile();
+            }
+        });
 
-        // Initialize preferences
-        preferences = getSharedPreferences(Keys.PREFERENCES_ID, Context.MODE_PRIVATE);
+        // T
+
     }
 
-    public void saveProfile(View view) {
+    public void saveProfile() {
 
         // Getting input data
         String name = inputName.getText().toString();
@@ -45,18 +50,15 @@ public class ProfileSavingActivity extends AppCompatActivity {
             return;
         }
 
-        // Get the preferences editor
-        SharedPreferences.Editor editor = preferences.edit();
+        // TODO - Initialize the preferences
 
-        // Adding data to the editor
-        editor.putString(Keys.NAME, name);
-        editor.putInt(Keys.AGE, Integer.parseInt(age));
-        editor.putString(Keys.TELEPHONE, tel);
-        editor.putString(Keys.EMAIL, email);
-        editor.putBoolean(Keys.IS_FIRST_RUN, false);
 
-        // Call commit() / apply() to save to save the data
-        editor.apply();
+        // TODO - Add begin an editing transaction
+
+
+        // TODO - Commit the transaction to save the data
+
+
 
         Intent intent = new Intent(this, ProfileDetailActivity.class);
         startActivity(intent);
