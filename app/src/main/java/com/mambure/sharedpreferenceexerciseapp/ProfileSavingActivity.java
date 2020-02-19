@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class ProfileSavingActivity extends AppCompatActivity {
 
@@ -60,7 +61,7 @@ public class ProfileSavingActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, ProfileDetailActivity.class);
         startActivity(intent);
-        finish();
+        ActivityCompat.finishAffinity(this);
     }
 
 }

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -23,11 +24,11 @@ public class LauncherActivity extends AppCompatActivity {
         if (isFirstRun) {
             Intent intent = new Intent(this, ProfileSavingActivity.class);
             startActivity(intent);
-            finish();
         }else {
             Intent intent = new Intent(this, ProfileDetailActivity.class);
             startActivity(intent);
-            finish();
         }
+
+        ActivityCompat.finishAffinity(this);
     }
 }
